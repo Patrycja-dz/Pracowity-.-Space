@@ -1,0 +1,26 @@
+.form {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.form__field {
+    padding: 10px;
+    flex-basis: 670px;
+}
+
+.form__addTaskButton {
+    margin: 0 20px;
+    background-color: teal;
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+
+}
+
+@media(max-width: 370px) {
+    .form {
+        flex-wrap: wrap;
+        padding: 10px 10px ;
+    }
+}
