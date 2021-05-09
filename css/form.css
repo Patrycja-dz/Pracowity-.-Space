@@ -1,26 +1,38 @@
 .form {
     display: flex;
-    flex-direction: row;
     padding: 10px;
+    /* border: 1px solid red; */
+
 }
 
 .form__field {
     padding: 10px;
-    flex-basis: 670px;
-}
+    flex-shrink: 1;
+    flex-basis: 650px;
+    border: 2px solid #ddd;
 
+}
+.form__field::placeholder{
+    color: rgb(211, 211, 211);
+}
 .form__addTaskButton {
-    margin: 0 20px;
+    margin: 0 5px 0 10px;
     background-color: teal;
     color: #fff;
     border: none;
-    padding: 0 20px;
-
+    padding: 5px 20px;
+    flex-grow: 1;
+   
 }
 
 @media(max-width: 370px) {
     .form {
         flex-wrap: wrap;
-        padding: 10px 10px ;
+    }
+    .form__addTaskButton{
+        flex-grow: 1;
+       margin: 10px 0;
+       padding:10px 20px;
+       
     }
 }
