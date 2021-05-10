@@ -11,11 +11,11 @@ This project includes:
 ✓ Task status management, we can decide if the task is done or delete it.
 ## Technologies
 Project is created with:
-* 📁 Semantic HTML
-* 📁 CSS
-* 📁 BEM 
-* 📁 Grid
-* 📁 ES6+
+*:pencil: 📁 Semantic HTML
+*:pencil: 📁 CSS
+:pencil: 📁 BEM 
+:pencil: 📁 Grid
+:pencil: 📁 ES6+
 ## Usage:
 * Click on active input field 
 * Enter your task
