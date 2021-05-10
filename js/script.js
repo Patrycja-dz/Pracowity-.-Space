@@ -1,27 +1,25 @@
 {
-    const tasks = [];
-    const addNewTask =(newTaskContent)=>{
-        
-    }
-    const render = () => {
-        let htmlString = "";
+    const tasks = [{
+            content: "Obejrzeć serial",
+            done: false,
+        },
+        {
+            content: "zjeść obiad",
+            done: true,
+        },
+    ];
+    const renderTask = () => {
+        let htmlGenerateString = "";
         for (const task of tasks) {
-            htmlString += `
-            <li class ="list__item${task.done ? " list__item--done":""}">
-            <button class="list__button js-done"><i class="fas fa-check"></i></button>
+            htmlGenerateString += `
+            <li class = "list__item${task.done ? " list__item--done" : ""}">
             ${task.content}
-            <button class="list__button js-remove"><i class="fas fa-trash"></i></button>
             </li>`
-            document.querySelector(".js-tasks").innerHTML = htmlString;
         }
-    }
-    const onFormSubmit = (event) => {
-        event.preventDefault();
+        document.querySelector(".js-tasks").innerHTML = htmlGenerateString;
     }
     const init = () => {
-        render();
-        const form = document.querySelector(".js-form");
-        form.addEventListener("submit", onFormSubmit);
-    }
+        renderTask();
+    };
     init();
 }
