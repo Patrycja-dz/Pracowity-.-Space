@@ -1,16 +1,10 @@
 .container {
-    display: grid;
-    grid-auto-columns: minmax(60px, auto);
-    align-content: center;
-    margin: 10px 5px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding:10px;
 
 }
 
-.container__article {
-    background-color: #fff;
-    padding-left: 10px;
-    border-top: 1px solid #ddd;
 
-}
 
 
