@@ -10,8 +10,10 @@
         crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
     <link href="css/style.css" rel="stylesheet">
     <link href="css/container.css" rel="stylesheet">
+    <link href="css/section.css" rel="stylesheet">
     <link href="css/form.css" rel="stylesheet">
     <link href="css/list.css" rel="stylesheet">
     <script src="js/script.js" defer></script>
@@ -20,25 +22,27 @@
 
 <body>
 </body>
-<h1 class="heading">Lista zadań</h1>
-<section class="container">
-    <article class="container__article">
-        <h2 class="container__subHeading">Dodaj nowe zadanie</h2>
-    </article>
-    <article class="container__article container__article--special">
-        <form class="form js-form">
-            <input placeholder="Co jest do zrobienia?" class="form__field js-newTask">
-            <button class="form__addTaskButton js-addTask">Dodaj zadanie</button>
-        </form>
-    </article>
-</section>
-<section class="container">
-    <article class="container__article">
-        <h2 class="container__subHeading">Lista zadań</h2>
-    </article>
-    <article class="container__article container__article--special">
-        <ul class="js-tasks"></ul>
-    </article>
-</section>
+<main class="container">
+    <header>
+        <h1 class="heading">Lista zadań</h1>
+    </header>
+
+    <section class="section">
+        <h2 class="section__heading">Dodaj nowe zadania</h2>
+        <article class="section__wrapper">
+            <form class="form js-form    ">
+                <input placeholder="Co jest do zrobienia?" class="form__field js-newTask">
+                <button class="form__addTaskButton js-addTask">Dodaj zadanie</button>
+            </form>
+        </article>
+    </section>
+    <section class="section">
+        <h2 class="section__heading">Lista zadań</h2>
+        <article class="section__wrapper">
+            <ul class="list js-tasks"></ul>
+        </article>
+
+    </section>
+</main>
 
 </html>
