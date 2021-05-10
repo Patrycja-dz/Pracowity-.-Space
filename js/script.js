@@ -1,10 +1,21 @@
 {
     const tasks = [];
-
+    const focusInput = () => {
+        const newTaskFocus = document.querySelector(".js-newTask").focus();
+        if (newTaskFocus == "") {
+            newTaskFocus.focus()
+        }
+    }
+    const resetInput = () => {
+        const resetField = document.querySelector(".js-newTask");
+        resetField.value = "";
+    }
     const addNewTask = (newTaskContent) => {
         tasks.push({
             content: newTaskContent,
-        })
+        });
+        focusInput();
+        resetInput();
         renderTask();
     };
 
@@ -17,6 +28,7 @@
         tasks.splice(taskIndex, 1);
         renderTask();
     }
+
     const addEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
         removeButtons.forEach((removeButton, taskIndex) => {
@@ -35,16 +47,25 @@
         let htmlGenerateString = "";
         for (const task of tasks) {
             htmlGenerateString += `
-            <li class = "list__item${task.done ? " list__item--done" : ""}">
-            <span class="list__task">${task.content}</span>
-            <button class="list__button js-done">d</button>
-        
-            <button class="list__button js-remove">r</button>
-            </li>`
-            document.querySelector(".js-tasks").innerHTML = htmlGenerateString;
+            <li 
+              class="list__item"
+            >
+              <button class="list__button list__button--done js-done">
+              ${task.done ? "✓" : ""}</button>
+              
+               <span class="list__task${task.done ? " list__task--done":""}">
+               ${task.content}
+               </span>
+               <button class="list__button list__button--remove js-remove">🗑</button>
+            </li>
+            `
+
         };
+        document.querySelector(".js-tasks").innerHTML = htmlGenerateString;
         addEvents();
     };
+   
+
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -53,6 +74,7 @@
             return;
         };
         addNewTask(newTaskContent);
+
     };
     const init = () => {
         renderTask();
