@@ -11,9 +11,10 @@
         resetField.value = "";
     }
     const addNewTask = (newTaskContent) => {
-        tasks.push({
-            content: newTaskContent,
-        });
+        const copiedTaskArray = [
+            ...tasks,
+            {content:newTaskContent},
+        ];
         focusInput();
         resetInput();
         renderTask();
@@ -24,8 +25,13 @@
         renderTask();
     }
 
-    const removeTask = (taskIndex) => {
-        tasks.splice(taskIndex, 1);
+    const removeTasks = (taskIndex) => {
+        const removeTaskInCopiedTaskArray = [
+            ...copiedTaskArray,
+        ];
+        const removeItemIndex = taskIndex;
+        const removedItem = removeTaskInCopiedTaskArray[removeItemIndex];
+        const filterRemoveTasks = removeTaskInCopiedTaskArray.filter((removeTask,index)=>index !==removeTask);
         renderTask();
     }
 
