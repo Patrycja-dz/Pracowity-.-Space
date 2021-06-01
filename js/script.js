@@ -1,5 +1,6 @@
 {
-    const tasks = [];
+    let tasks = [];
+    let hideTaskDone = false;
     const focusInput = () => {
         const newTaskFocus = document.querySelector(".js-newTask").focus();
         if (newTaskFocus == "") {
@@ -11,27 +12,34 @@
         resetField.value = "";
     }
     const addNewTask = (newTaskContent) => {
-        const copiedTaskArray = [
+        tasks = [
             ...tasks,
-            {content:newTaskContent},
+            {
+                newTaskContent
+            }
         ];
         focusInput();
         resetInput();
         renderTask();
     };
 
-    const doneTask = (taskIndex) => {
-        tasks[taskIndex].done = !tasks[taskIndex].done;
+    const doneTask = (editIndex) => {
+        tasks = [
+            ...tasks.slice(0, editIndex),
+            {
+                ...tasks[editIndex],
+                done: true
+            },
+            ...tasks.slice(editIndex + 1)
+        ];
         renderTask();
-    }
+    };
+
+
+
 
     const removeTasks = (taskIndex) => {
-        const removeTaskInCopiedTaskArray = [
-            ...copiedTaskArray,
-        ];
-        const removeItemIndex = taskIndex;
-        const removedItem = removeTaskInCopiedTaskArray[removeItemIndex];
-        const filterRemoveTasks = removeTaskInCopiedTaskArray.filter((removeTask,index)=>index !==removeTask);
+        tasks = [...tasks.slice(0, taskIndex), ...tasks.slice(taskIndex + 1)]
         renderTask();
     }
 
@@ -39,13 +47,13 @@
         const removeButtons = document.querySelectorAll(".js-remove");
         removeButtons.forEach((removeButton, taskIndex) => {
             removeButton.addEventListener("click", () => {
-                removeTask(taskIndex);
+                removeTasks(taskIndex);
             });
         });
         const toggleDoneButtons = document.querySelectorAll(".js-done");
-        toggleDoneButtons.forEach((toggleDoneButton, taskIndex) => {
+        toggleDoneButtons.forEach((toggleDoneButton, editIndex) => {
             toggleDoneButton.addEventListener("click", () => {
-                doneTask(taskIndex);
+                doneTask(editIndex);
             })
         })
     }
@@ -70,7 +78,7 @@
         document.querySelector(".js-tasks").innerHTML = htmlGenerateString;
         addEvents();
     };
-   
+
 
 
     const onFormSubmit = (event) => {
