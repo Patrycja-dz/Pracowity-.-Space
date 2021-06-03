@@ -15,7 +15,7 @@
         tasks = [
             ...tasks,
             {
-                newTaskContent
+                newTaskContent,
             }
         ];
         focusInput();
@@ -27,8 +27,8 @@
         tasks = [
             ...tasks.slice(0, editIndex),
             {
-                ...tasks[editIndex],
-                done: true
+                ...tasks[editIndex], done:!tasks[editIndex].done,
+                
             },
             ...tasks.slice(editIndex + 1)
         ];
@@ -51,9 +51,9 @@
             });
         });
         const toggleDoneButtons = document.querySelectorAll(".js-done");
-        toggleDoneButtons.forEach((toggleDoneButton, editIndex) => {
+        toggleDoneButtons.forEach((toggleDoneButton, taskIndex) => {
             toggleDoneButton.addEventListener("click", () => {
-                doneTask(editIndex);
+                doneTask(taskIndex);
             })
         })
     }
@@ -68,7 +68,7 @@
               ${task.done ? "✓" : ""}</button>
               
                <span class="list__task${task.done ? " list__task--done":""}">
-               ${task.content}
+               ${task.newTaskContent}
                </span>
                <button class="list__button list__button--remove js-remove">🗑</button>
             </li>
