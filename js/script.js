@@ -11,6 +11,7 @@
         const resetField = document.querySelector(".js-newTask");
         resetField.value = "";
     }
+
     const addNewTask = (newTaskContent) => {
         tasks = [
             ...tasks,
@@ -28,20 +29,16 @@
             ...tasks.slice(0, editIndex),
             {
                 ...tasks[editIndex], done:!tasks[editIndex].done,
-                
             },
             ...tasks.slice(editIndex + 1)
         ];
         renderTask();
     };
 
-
-
-
     const removeTasks = (taskIndex) => {
         tasks = [...tasks.slice(0, taskIndex), ...tasks.slice(taskIndex + 1)]
         renderTask();
-    }
+    };
 
     const addEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
@@ -56,7 +53,10 @@
                 doneTask(taskIndex);
             })
         })
-    }
+    };
+    const markAllTaskDone = () =>{
+     
+    };
     const renderTask = () => {
         let htmlGenerateString = "";
         for (const task of tasks) {

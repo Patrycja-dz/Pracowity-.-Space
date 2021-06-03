@@ -30,6 +30,7 @@
     border: none;
     color: #fff;
     font-size: 16px;
+    text-align: center;
 }
 .list__button--done{
     background-color: green;
