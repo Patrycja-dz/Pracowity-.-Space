@@ -28,7 +28,8 @@
         tasks = [
             ...tasks.slice(0, editIndex),
             {
-                ...tasks[editIndex], done:!tasks[editIndex].done,
+                ...tasks[editIndex],
+                done: !tasks[editIndex].done,
             },
             ...tasks.slice(editIndex + 1)
         ];
@@ -54,38 +55,48 @@
             })
         })
     };
-    const markAllTaskDone = () =>{
-     tasks = tasks.map((task) =>({
-         ...task,
-         done: true,
-     }))
-     renderTask();
+    const markAllTaskDone = () => {
+        tasks = tasks.map((task) => ({
+            ...task,
+            done: true,
+        }))
+        renderTask();
     };
-    const hideAllDoneTasks = () =>{
+    const hideAllDoneTasks = () => {
         hideTaskDone = !hideTaskDone;
+        renderTask();
     }
     const renderTask = () => {
-        let htmlGenerateString = "";
-        for (const task of tasks) {
-            htmlGenerateString += `
-            <li 
-              class="list__item"
-            >
-              <button class="list__button list__button--done js-done">
-              ${task.done ? "✓" : ""}</button>
-              
-               <span class="list__task${task.done ? " list__task--done":""}">
-               ${task.newTaskContent}
-               </span>
-               <button class="list__button list__button--remove js-remove">🗑</button>
+        const taskToHtml = (task) => {
+            `<li 
+                  class="list__item${task.done && hideTaskDone} ? " list__task--hidden" : ""> js.tasks"
+                >
+                  <button class="list__button list__button--done js-done">
+                  ${task.done ? "✓" : ""}</button>
+                  
+                   <span class="list__task${task.done ? " list__task--done":""}">
+                   ${task.newTaskContent}
+                   </span>
+                   <button class="list__button list__button--remove js-remove">🗑</button>
             </li>
-            `
+                `
+        }
 
-        };
-        document.querySelector(".js-tasks").innerHTML = htmlGenerateString;
-        addEvents();
+        const taskHtmlElement = document.querySelector(".js-tasks");
+        taskHtmlElement.innerHTML = tasks.map(taskToHtml).join("");
     };
-
+    const renderButtons = () => {
+        const buttonsElement = document.querySelector(".js-buttons");
+        if (task.length === 0) {
+            buttonsElement.innerHTML = "";
+            return
+        }
+        buttonsElement.innerHTML = `
+        <button class = "buttons__"> 
+        
+        
+        `
+    }
 
 
     const onFormSubmit = (event) => {
