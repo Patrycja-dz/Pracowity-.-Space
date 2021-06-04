@@ -55,8 +55,13 @@
         })
     };
     const markAllTaskDone = () =>{
-     
+     tasks = tasks.map((task) =>({
+         ...task,
+         done: true,
+     }))
+     renderTask();
     };
+    
     const renderTask = () => {
         let htmlGenerateString = "";
         for (const task of tasks) {
