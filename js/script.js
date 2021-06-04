@@ -21,7 +21,7 @@
         ];
         focusInput();
         resetInput();
-        renderTask();
+        render();
     };
 
     const doneTask = (editIndex) => {
@@ -33,12 +33,12 @@
             },
             ...tasks.slice(editIndex + 1)
         ];
-        renderTask();
+        render();
     };
 
     const removeTasks = (taskIndex) => {
         tasks = [...tasks.slice(0, taskIndex), ...tasks.slice(taskIndex + 1)]
-        renderTask();
+        render();
     };
 
     const addEvents = () => {
@@ -60,11 +60,11 @@
             ...task,
             done: true,
         }))
-        renderTask();
+        render();
     };
     const hideAllDoneTasks = () => {
         hideTaskDone = !hideTaskDone;
-        renderTask();
+        render();
     }
     const renderTask = () => {
         const taskToHtml = (task) => {
@@ -101,12 +101,24 @@
         >
          Ukończ wszystkie
         </button>
-        
-        
-        `
+        `;
+    };
+    const bindEventsToButtons = () => {
+        const markAllTaskDoneButton = document.querySelector(".js-markAllTaskDone");
+        if (markAllTaskDoneButton) {
+            markAllTaskDoneButton.addEventListener(click, markAllTaskDone)
+        };
+        const hideAllTaskDoneButton = document.querySelector(".js-hideAllTaskDone");
+        if (hideAllTaskDoneButton) {
+            hideAllTaskDoneButton.addEventListener(click, hideAllDoneTasks);
+        }
     }
-
-
+    const render = () => {
+        addEvents();
+        renderTask();
+        renderButtons();
+        bindEventsToButtons();
+    }
     const onFormSubmit = (event) => {
         event.preventDefault();
         const newTaskContent = document.querySelector(".js-newTask").value.trim();
@@ -117,7 +129,7 @@
 
     };
     const init = () => {
-        renderTask();
+        render();
         const form = document.querySelector(".js-form");
         form.addEventListener("submit", onFormSubmit);
     };
