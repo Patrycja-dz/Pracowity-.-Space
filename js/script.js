@@ -69,7 +69,7 @@
     const renderTask = () => {
         const taskToHtml = (task) => {
             `<li 
-                  class="list__item${task.done && hideTaskDone} ? " list__task--hidden" : ""> js.tasks"
+                  class="list__item${task.done && hideTaskDone} ? " list__task--hidden" : ""> js-tasks"
                 >
                   <button class="list__button list__button--done js-done">
                   ${task.done ? "✓" : ""}</button>
@@ -92,7 +92,15 @@
             return
         }
         buttonsElement.innerHTML = `
-        <button class = "buttons__"> 
+        <button 
+           class = "buttons__btnElement js-hideAllTaskDone"
+             >${hideTaskDone ? "Pokaż" : "Ukryj"} ukończone
+        </buttons>
+        <button 
+           class = "buttons__btnElement js-markAllTaskDone" ${ tasks.every(({done}) => done) ? " disabled" : ""}
+        >
+         Ukończ wszystkie
+        </button>
         
         
         `
