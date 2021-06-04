@@ -14,7 +14,9 @@
 .list__task--done {
     text-decoration: line-through;
 }
-
+.list__task--hidden{
+    visibility: hidden;
+}
 .list__task {
     word-break: break-word;
     flex-basis: 100%;
