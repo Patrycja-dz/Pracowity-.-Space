@@ -61,7 +61,9 @@
      }))
      renderTask();
     };
-    
+    const hideAllDoneTasks = () =>{
+        hideTaskDone = !hideTaskDone;
+    }
     const renderTask = () => {
         let htmlGenerateString = "";
         for (const task of tasks) {
