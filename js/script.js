@@ -67,31 +67,31 @@
         render();
     }
     const renderTask = () => {
-        const taskToHtml = (task) => {
-            `<li 
-                  class="list__item${task.done && hideTaskDone} ? " list__task--hidden" : ""> js-tasks"
-                >
-                  <button class="list__button list__button--done js-done">
-                  ${task.done ? "✓" : ""}</button>
-                  
-                   <span class="list__task${task.done ? " list__task--done":""}">
-                   ${task.newTaskContent}
-                   </span>
-                   <button class="list__button list__button--remove js-remove">🗑</button>
+        let htmlGenerateString = "";
+        for (const task of tasks) {
+            htmlGenerateString += `
+            <li 
+              class="list__item"
+            >
+              <button class="list__button list__button--done js-done">
+              ${task.done ? "✓" : ""}</button>
+              
+               <span class="list__task${task.done ? " list__task--done":""}">
+               ${task.newTaskContent}
+               </span>
+               <button class="list__button list__button--remove js-remove">🗑</button>
             </li>
-                `
-        }
+            `
 
-        const taskHtmlElement = document.querySelector(".js-tasks");
-        taskHtmlElement.innerHTML = tasks.map(taskToHtml).join("");
+        };
+        document.querySelector(".js-tasks").innerHTML = htmlGenerateString;
+        addEvents();
     };
+
     const renderButtons = () => {
-        const buttonsElement = document.querySelector(".js-buttons");
-        if (task.length === 0) {
-            buttonsElement.innerHTML = "";
-            return
-        }
-        buttonsElement.innerHTML = `
+        let htmlGenerateButtons = "";
+    if(tasks.length > 0){
+        htmlGenerateButtons += `
         <button 
            class = "buttons__btnElement js-hideAllTaskDone"
              >${hideTaskDone ? "Pokaż" : "Ukryj"} ukończone
@@ -101,8 +101,11 @@
         >
          Ukończ wszystkie
         </button>
-        `;
+        `
+        };
+        document.querySelector(".js-buttons").innerHTML = htmlGenerateButtons;
     };
+
     const bindEventsToButtons = () => {
         const markAllTaskDoneButton = document.querySelector(".js-markAllTaskDone");
         if (markAllTaskDoneButton) {
@@ -113,12 +116,14 @@
             hideAllTaskDoneButton.addEventListener(click, hideAllDoneTasks);
         }
     }
+
     const render = () => {
         addEvents();
         renderTask();
         renderButtons();
         bindEventsToButtons();
     }
+
     const onFormSubmit = (event) => {
         event.preventDefault();
         const newTaskContent = document.querySelector(".js-newTask").value.trim();
@@ -128,6 +133,7 @@
         addNewTask(newTaskContent);
 
     };
+
     const init = () => {
         render();
         const form = document.querySelector(".js-form");
