@@ -17,8 +17,8 @@
 }
 
 .form__field::placeholder {
-    color: rgb(211, 211, 211);
-    padding-left: 10px;
+    color: #d3d3d3;
+
 }
 
 .form__addTaskButton {
@@ -26,5 +26,20 @@
     background-color: teal;
     color: #fff;
     border: none;
+    transition: 0.3s;
+}
 
+.form__addTaskButton:hover {
+    background-color: hsl(180, 100%, 30%);
+    transform: scale(1.1);
+
+}
+.form__addTaskButton:active{
+    background-color: hsl(180, 100%, 35%);
+}
+
+@media(max-width:767px) {
+    .form__addTaskButton:hover {
+        transform: scale(1.0);
+    }
 }

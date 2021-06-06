@@ -4,10 +4,23 @@
 }
 .section__heading{
     font-size: 18px;
-    padding: 20px;
     margin: 0;
-    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    font-weight: 600;
 }
 .section__wrapper{
     padding: 20px;
+}
+
+.section__header{
+    display: grid;
+    grid-template-columns: auto auto;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    gap: 20px;
+}
+@media(max-width:767px) {
+    .section__header {
+        grid-template-columns: 1fr;
+    }
 }
