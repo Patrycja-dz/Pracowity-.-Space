@@ -71,7 +71,7 @@
         for (const task of tasks) {
             htmlGenerateString += `
             <li 
-              class="list__item"
+              class="list__item${task.done && hideTaskDone ? " list__task--hidden" : ""}"
             >
               <button class="list__button list__button--done js-done">
               ${task.done ? "✓" : ""}</button>
@@ -89,10 +89,14 @@
     };
     const renderButtons = () =>{
         let htmlBtn ="";
+        if(!tasks.length){
+            htmlBtn.innerHTML = "";
+            return;
+        }
         if(tasks.length > 0){
             htmlBtn += `
             <button class = "buttons__btnElement js-hideAllTaskDone">${hideTaskDone ? "Pokaż" : "Ukryj"} ukończone </buttons>
-            <button class = "buttons__btnElement js-markAllTaskDone" ${tasks.every(task => !task.done) ? " disabled" : ""}> Ukończ wszystkie </button> 
+            <button class = "buttons__btnElement js-markAllTaskDone" ${tasks.every(task => !task.done) ? "" : " disabled"}> Ukończ wszystkie </button> 
             `
         };
         document.querySelector(".js-buttons").innerHTML = htmlBtn;
@@ -139,6 +143,7 @@ const bindEventsToButtons = () => {
     if (hideAllTaskDoneButton) {
         hideAllTaskDoneButton.addEventListener("click", hideAllDoneTasks);
     }
+   
 }
 
 const render = () => {
