@@ -1,5 +1,5 @@
 # Pracowity . Space
-![ToDo__App](https://i.postimg.cc/1XdZ0gCf/lista.gif)
+![ToDo__App](https://i.postimg.cc/CKj22Phk/todo-gif.gif)
 ## Overview
 This is a simple task management app. The application allows you to add tasks, mark those that are finished and delete them.
 Pracowity.Space helped me to practice functions and HTML rendering with JavaScript.
