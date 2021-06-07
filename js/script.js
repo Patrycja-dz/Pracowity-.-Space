@@ -103,37 +103,7 @@
         bindEventsToButtons();
     }
 
-    // const renderButtons = () => {
-    //     const buttonsGenerateInHtml = document.querySelector(".js-buttons");
-
-    //     if (!tasks.length) {
-    //         buttonsGenerateInHtml.innerHTML = "";
-    //         return;
-    //     }
-    //     buttonsGenerateInHtml.innerHTML += `
-    //         <button class = "buttons__btnElement js-hideAllTaskDone">${hideTaskDone ? "Pokaż" : "Ukryj"} ukończone </buttons>
-    //         <button class = "buttons__btnElement js-markAllTaskDone" ${tasks.every(task => !task.done) ? " disabled" : ""}> Ukończ wszystkie </button> 
-    //         `;
-          
-    // };
-
-//     let htmlGenerateButtons = null;
-// if(tasks.length > 0){
-//     htmlGenerateButtons +=`
-//     <button 
-//        class = "buttons__btnElement js-hideAllTaskDone"
-//     >${hideTaskDone ? "Pokaż" : "Ukryj"} ukończone
-//     </buttons>
-//     <button 
-//        class = "buttons__btnElement js-markAllTaskDone" ${ tasks.every(({done}) => done) ? " disabled" : ""}
-//     >
-//      Ukończ wszystkie
-//     </button>
-//     `
-//     };
-//     document.querySelector(".js-buttons").innerHTML = htmlGenerateButtons;
-// };
-
+   
 const bindEventsToButtons = () => {
     const markAllTaskDoneButton = document.querySelector(".js-markAllTaskDone");
     if (markAllTaskDoneButton) {
