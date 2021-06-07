@@ -68,25 +68,6 @@
     };
 
     const renderTask = () => {
-        // let htmlGenerateString = "";
-        // for (const task of tasks) {
-        //     htmlGenerateString += `
-        //     <li 
-        //       class="list__item${task.done && hideTaskDone ? " list__task--hidden" : ""}"
-        //     >
-        //       <button class="list__button list__button--done js-done">
-        //       ${task.done ? "✓" : ""}</button>
-
-        //        <span class="list__task${task.done ? " list__task--done":""}">
-        //        ${task.newTaskContent}
-        //        </span>
-        //        <button class="list__button list__button--remove js-remove">🗑</button>
-        //     </li>
-        //     `
-
-        // };
-        // document.querySelector(".js-tasks").innerHTML = htmlGenerateString;
-        // addEvents();
         let htmlGenerateString = tasks.map(task => `
         <li class="list__item${task.done && hideTaskDone ? " list__task--hidden" : ""}">
           <button class="list__button list__button--done js-done">${task.done ? "✓" : ""}</button>
