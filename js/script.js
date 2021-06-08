@@ -4,10 +4,7 @@
     let hideTaskDone = false;
 
     const focusInput = () => {
-        const newTaskFocus = document.querySelector(".js-newTask").focus();
-        if (newTaskFocus == "") {
-            newTaskFocus.focus()
-        };
+        document.querySelector(".js-newTask").focus();
     };
 
     const resetInput = () => {
@@ -19,10 +16,10 @@
         tasks = [
             ...tasks,
             {
-                newTaskContent,
+                content: newTaskContent,
             }
         ];
-        focusInput();
+        focusInput()
         resetInput();
         render();
     };
@@ -80,7 +77,7 @@
              ${task.done ? "✓" : ""}
           </button>
           <span class="list__task${task.done ? " list__task--done":""}">
-             ${task.newTaskContent}
+             ${task.content}
           </span>
           <button class="list__button list__button--remove js-remove">
             🗑
@@ -101,7 +98,7 @@
         if (tasks.length > 0) {
             htmlBtn += `
             <button class = "buttons__btnElement js-hideAllTaskDone">${hideTaskDone ? "Pokaż" : "Ukryj"} ukończone </buttons>
-            <button class = "buttons__btnElement js-markAllTaskDone" ${tasks.every(task => !task.done) ? "" : " disabled"}> Ukończ wszystkie </button> 
+            <button class = "buttons__btnElement js-markAllTaskDone" ${tasks.every(task => task.done) ? "disabled" : ""}> Ukończ wszystkie </button> 
             `
         };
         document.querySelector(".js-buttons").innerHTML = htmlBtn;
@@ -138,6 +135,7 @@
 
     const init = () => {
         render();
+        focusInput();
         const form = document.querySelector(".js-form");
         form.addEventListener("submit", onFormSubmit);
     };
